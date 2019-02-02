@@ -1,7 +1,6 @@
 % 459 lab 1 Part 2
 % apply DFT-based interpolation
 % zero insertion in frequency domain
-
 load handel
 
 N = 20000;
@@ -9,11 +8,9 @@ x = y(1:N);
 x2 = x(1:2:N);      % produces a sequence with even length
 x3 = x(1:3:N);      % produces a sequence with odd length
 x4 = x(1:4:N);      % produces another sequence with even length 
-
 % 
 % Perfom the interpolation on the x2 sequence created above
 %
-
 K = 1;              % insert K zeros between each sequence value
 p = length(x2);     % length of the sequence
 p2 = p/2;
@@ -23,7 +20,6 @@ X2 = fft(x2);       % obtain the DFT sequence
 % insert K zeros between each sequence value 
 % apply equation 1.7b because the sequence is even length 
 Xe = [X2(1:p2); X2(p2+1)/2; zeros(K*p-1, 1); X2(p2+1)/2; X2((p2+2):p)];
-
 
 xe = ifft(Xe)*(K+1); % convert signal to time domain using IDFT 
 

@@ -3,12 +3,12 @@
 % Apply DFT and observe the magnitude 
 
 % dft function input parameters: 
-% fs = sample frequency
 % N = subset length
-function [A] = dft(fs, N) 
+function [A] = dft(N) 
 
 load xn                 % noise corrupted signal 
 
+fs = 128;                % sampling frequency 
 s = xn(1:N);            % length N subset of xn
 
 x1 = abs(fft(s));       % magnitude of dft of the signal

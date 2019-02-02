@@ -5,10 +5,10 @@
 load xn                 % load signal xn
 x = xn(1:1792);         % make signal an even length
 
-K = 128;                % length of each subset
 L = 14;                 % number of subsets 
+K = 1792/L;             % length of each subset
 
-xm = reshape(x, 14, 128);   % create K x L matrix 
+xm = reshape(x, L, K);   % create K x L matrix 
 
 xk = 1;                % initialize a variable to store the dft sequence
 
@@ -20,11 +20,12 @@ end
 
 avg = xk/L;             % arithmetic average of the L sets of DFT sequences
 
-f = linspace(0, 128/2,8);   % frequency vector
-avg_sub = avg(1:L/2+1);
+f = linspace(0, 64 ,L/2+1);   % frequency vector
+avg_sub = avg(1:L/2+1); size(avg_sub)
 
 plot(f,avg_sub)         
-title('DFT Averaging');
+title('DFT Averaging'); 
 grid 
 xlabel('frequency (Hz)')
 ylabel('Magnitude')
+
